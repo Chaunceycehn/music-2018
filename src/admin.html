@@ -39,41 +39,12 @@
     <script src="./vendors/qiniu.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
     <script src="../node_modules/leancloud-storage/dist/av-min.js"></script>
-    <script>
-        var APP_ID = 'GDMP6sOi40diiffcuReOjoa9-gzGzoHsz';
-        var APP_KEY = 'I8c83ITqqtfEGlWn7M6vADtQ';
-
-        AV.init({
-            appId: APP_ID,
-            appKey: APP_KEY
-        });
-
-
-       
-        // //创建数据库
-        // var TestObject = AV.Object.extend('Playlist');
-        // //创建一条数据
-        // var testObject = new TestObject();
-        // //保存记录
-        // testObject.save({
-        //     name: 'test',
-        //     cover: 'test',
-        //     creater_id: 'test',
-        //     description: 'test',
-        //     songs: ['1', '2']
-        // }).then(function (object) {
-        //     console.log("1");
-        // })
-        // console.log(window.qiniu);
-
-    </script>
+    <script src="./js/initializers/av.js"></script>
+    <script src="./js/event-hub.js"></script>
     <script src="./js/song-from.js"></script>
     <script src="./js/new-song.js"></script>
     <script src="./js/song-list.js"></script>
     <script src="./js/upload-song.js"></script>
-
-
-
 </body>
 
 </html>
