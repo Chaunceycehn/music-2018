@@ -6,7 +6,8 @@
         `,
         render(data){
             $(this.el).html(this.template)
-        }
+        },
+
     }  
     let model = {}
     let controller = {
@@ -18,9 +19,16 @@
             window.eventHub.on('upload',(data)=>{
                 this.active()
             })
+            window.eventHub.on('select',(data)=>{
+                console.log(data.id);
+                this.clearActive()
+            })
         },
         active(){
             $(this.view.el).addClass('active')
+        },
+        clearActive() {
+            $(this.view.el).removeClass('active')
         }
     } 
     controller.init(view,model)
