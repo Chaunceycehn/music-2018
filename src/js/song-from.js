@@ -82,8 +82,11 @@
             this.view.render(this.model.data)
             this.bindevents()
             window.eventHub.on('upload', (data) => {
+                this.model.data = data
+                console.log(data);
                 this.view.render(data)
             })
+
             window.eventHub.on('select', (data) => {
                 this.model.data = data
                 this.view.render(this.model.data)
@@ -119,7 +122,7 @@
         bindevents() {
             $(this.view.el).on('submit', 'form', (e) => {
                 e.preventDefault()
-
+                uploadStatus.textContent = ' '
                 if (this.model.data.id) {
                     this.updata()
                 } else {

@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/default.css">
+    <link rel="stylesheet" href="./css/loading.css">
     <title>管理页面</title>
 </head>
 
 <body>
     <div class="page">
         <aside class="sidebar">
-            <div class="newSong">
-            </div>
             <div id="songList-container">
                 <ul class="songList">
                 </ul>
@@ -32,6 +31,8 @@
 
         </main>
     </div>
+            <div id = 'siteloading' class="loading">
+                </div>
 
     <!-- <script src="../node_modules/qiniu-js/dist/qiniu.min.js"></script> -->
     <script src="./vendors/moxie.min.js"></script>
@@ -42,9 +43,11 @@
     <script src="./js/initializers/av.js"></script>
     <script src="./js/event-hub.js"></script>
     <script src="./js/song-from.js"></script>
-    <script src="./js/new-song.js"></script>
+    <!-- <script src="./js/new-song.js"></script> -->
     <script src="./js/song-list.js"></script>
     <script src="./js/upload-song.js"></script>
+    <script src="./js/loading.js"></script>
+
 </body>
 
 </html>

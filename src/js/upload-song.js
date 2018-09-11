@@ -11,8 +11,6 @@
            this.view = view
            this.model = model 
            this.initQinniu()
-  
-        
         },
         initQinniu(){
             var uploader = Qiniu.uploader({
@@ -34,9 +32,11 @@
                     },
                     'BeforeUpload': function (up, file) {
                         // 每个文件上传前,处理相关的事情
+                        window.eventHub.emit('beforeupload',)
                     },
                     'UploadProgress': function (up, file) {
                         // 每个文件上传时,处理相关的事情
+                        uploadStatus.textContent = '上传中'
                         uploadStatus.textContent = '上传中'
                     },
                     'FileUploaded': function (up, file, info) {
@@ -47,7 +47,8 @@
                         //    "key": "gogopher.jpg"
                         //  }
                         // 参考http://developer.qiniu.com/docs/v6/api/overview/up/response/simple-response.html
-    
+                        window.eventHub.emit('afterupload',)
+                        uploadStatus.textContent = '上传完成，请保存歌曲信息'
                         var domain = up.getOption('domain');
                         var response = JSON.parse(info.response);
                         var sourceLink = 'http://' + domain + '/' + encodeURIComponent(response.key);

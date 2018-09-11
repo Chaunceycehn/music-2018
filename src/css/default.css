@@ -17,9 +17,8 @@ body { font-size: 12px; line-height: 1.5; }
     display: flex;
     flex-direction: column;
 }
-.newSong { text-align: center; padding: 10px } 
 #songList-container{flex-grow: 1;}
-.songList { text-align: left; border-top: 1px solid #000; } 
+.songList { text-align: left; border-top: 0px solid #000; } 
 .songList > li { border-bottom: 1px solid #ddd; padding: 10px; margin-right: 10px; margin-left: 10px; } 
 .active{background:rgb(196, 196, 196) ;}
 .uploadArea { } 
