@@ -16,6 +16,8 @@ body { font-size: 12px; line-height: 1.5; }
 .page > aside {
     display: flex;
     flex-direction: column;
+    box-shadow: 0 9px 31px 0 rgba(0,0,0,.03);
+
 }
 #songList-container{flex-grow: 1;}
 .songList { text-align: left; border-top: 0px solid #000; } 
