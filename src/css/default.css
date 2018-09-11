@@ -9,8 +9,8 @@ body { font-size: 12px; line-height: 1.5; }
 
 /**/
 .page { display: flex; height: 100vh; } 
-.page > aside { width: 200px; margin-right: 20px;} 
-.page > main { flex-grow: 1;  background: rgb(196, 196, 196);} 
+.page > aside { width: 200px;} 
+.page > main { flex-grow: 1;  background: #F7F8FA;} 
 
 /*******aside*******/
 .page > aside {
@@ -19,17 +19,40 @@ body { font-size: 12px; line-height: 1.5; }
 }
 #songList-container{flex-grow: 1;}
 .songList { text-align: left; border-top: 0px solid #000; } 
-.songList > li { border-bottom: 1px solid #ddd; padding: 10px; margin-right: 10px; margin-left: 10px; } 
-.active{background:rgb(196, 196, 196) ;}
-.uploadArea { } 
-.draggable {text-align: center; padding: 20px; border-radius: 20px; border: 2px dashed #ddd; display: flex; align-items: center; justify-content: center; width: 200px; flex-direction: column; } 
-.clickable{
-    cursor: pointer;
-}
+.songList > li { border-bottom: 1px solid #ddd; padding:10px;} 
+.active{border-right: 3px solid #ea524e;}
+
 
 /*****main*****/
+.form-container{
+    visibility: hidden;
+}
+.form-container.active{
+    visibility: visible;
+}
+.form-container > h1{
+    position: absolute;
+    top:25%;
+    z-index: 2;
 
-form{font-size: 14px;}
+}
+.form-container{
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+form{font-size: 14px;
+    z-index: 2;
+
+    background: #FDFDFD;
+
+    display: inline;
+    position: absolute;
+    top:30%;
+
+ }
 
 form > .row{margin: 20px;display: flex;}
 form > .row > label {
@@ -51,5 +74,42 @@ form button{height: 30px;padding-right: 10px;padding-left: 10px;border-radius: 5
 form input[type=button]
 form input[type=submit]
 
-.page > main {padding-top: 20px;}
-.page > main > .form{}
+.page > main {
+    padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.uploadArea {
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    background: #FEFEFE;
+    border: 1px solid #e7eaf3;
+    box-shadow: 0 9px 31px 0 rgba(0,0,0,.03);
+    border-radius: 5px;
+    min-width: 1000px;
+    max-width: 1080px;
+    display: block;
+} 
+.draggable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+    background: #FEFEFE;
+
+    justify-content: center;
+    width: 1000px;
+    height: 600px;
+    flex-direction: column; 
+
+} 
+.clickable{
+    font-size: 20px;
+    text-align: center; 
+    align-items: center;
+    cursor: pointer;
+}

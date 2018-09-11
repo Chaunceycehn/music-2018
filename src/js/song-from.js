@@ -1,6 +1,6 @@
 {
     let view = {
-        el: '.page > main',
+        el:'#form-container',
         init() {
             this.$el = $(this.el)
         },
@@ -40,6 +40,12 @@
         },
         reset() {
             this.render({})
+        },
+        Active() {
+            $(this.el).addClass('active')
+        },
+        clearActive() {
+            $(this.el).removeClass('active')
         }
     }
 
@@ -83,12 +89,13 @@
             this.bindevents()
             window.eventHub.on('upload', (data) => {
                 this.model.data = data
-                console.log(data);
+                this.view.Active()
                 this.view.render(data)
             })
 
             window.eventHub.on('select', (data) => {
                 this.model.data = data
+                this.view.Active()
                 this.view.render(this.model.data)
             })
         },
@@ -121,6 +128,7 @@
         },
         bindevents() {
             $(this.view.el).on('submit', 'form', (e) => {
+                this.view.clearActive()
                 e.preventDefault()
                 uploadStatus.textContent = ' '
                 if (this.model.data.id) {

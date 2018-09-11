@@ -73,7 +73,6 @@
                         break
                     }
                 }
-                console.log(data);
                 window.eventHub.emit('select', JSON.parse(JSON.stringify(data)))
             })
         },
