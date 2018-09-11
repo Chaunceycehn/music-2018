@@ -7,7 +7,8 @@
     bottom: 0; 
     right: 0; 
     margin: auto;
-    background: rgba(rgb(187, 169, 169), rgb(174, 189, 174), rgb(191, 191, 211), 0.5);
+    background: rgba(172, 154, 154, .5);
+
 } 
 .loading.active{
     visibility: visible;
@@ -15,7 +16,8 @@
 .loading::before,.loading::after { 
      content:'';
      position:absolute; width: 0px; height: 0px; 
-     background: #000; border-radius: 50%; top: 0; 
+     background: #000;
+      border-radius: 50%; top: 0; 
      left: 0; 
      bottom: 0; 
      right: 0; 
