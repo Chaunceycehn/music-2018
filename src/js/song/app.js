@@ -1,5 +1,20 @@
 {
-    let view = {}
+    let view = {
+        el:'#app',
+        template:`
+            <audio src = {{url}}></audio>
+            <div>
+                
+            </div>
+        `,
+        render(data){
+            $(this.el).html(this.template.replace('{{url}}' , data.song.url))
+        },
+        play(){
+            let audio = $(this.el).find('audio')[0]
+            audio.play()
+        }
+    }
     let model = {
         data:{
             song: {
@@ -29,12 +44,14 @@
             let id = this.getSongId()
             // this.model.setId(id)
             this.model.get(id).then(()=>{
-                console.log("4685464564");
-
-                console.log(this.model.data);
-                
                 this.view.render(this.model.data)
               })
+            this.bindEvents()
+        },
+        bindEvents(){
+            $(this.view).on('click','.play',()=>{
+                this.view.paly()
+            })
         },
         getSongId() {
             let search = window.location.search
