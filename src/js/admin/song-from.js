@@ -1,6 +1,6 @@
 {
     let view = {
-        el:'#form-container',
+        el: '#form-container',
         init() {
             this.$el = $(this.el)
         },
@@ -18,13 +18,17 @@
                     <label>外链</label>
                     <input name="url" type="text" class="text" value="__url__">
                 </div>
+                <div class="row">
+                    <label>封面</label>
+                    <input name="cover" type="text" class="text" value="__cover__">
+                </div>
                 <div class="row actions">
                     <button  type="submit">保存</button>
                 </div>
             </form>
         `,
         render(data = {}) {
-            let placeholders = ['name', 'url', 'singer', 'id']
+            let placeholders = ['name', 'url', 'singer', 'id', 'cover']
             let html = this.template
             placeholders.map((string) => {
                 html = html.replace(`__${string}__`, data[string] || '')
@@ -51,7 +55,7 @@
 
     let model = {
         data: {
-            name: '', singer: '', url: '', id: '',
+            name: '', singer: '', url: '', id: '',cover:''
         },
         create(data) {
             var Song = AV.Object.extend('Song');
@@ -61,6 +65,8 @@
             song.set('lyrics', data.lyrics)
             song.set('url', data.url);
             song.set('cover', data.cover);
+            
+
             return song.save().then((newSong) => {
                 let { id, attributes } = newSong
                 Object.assign(this.data, { id, ...attributes })
@@ -68,15 +74,17 @@
                 console.error(error);
             });
         },
-        updata(data){
+        updata(data) {
             var song = AV.Object.createWithoutData('Song', this.data.id);
             // 修改属性
             song.set('name', data.name);
             song.set('singer', data.singer);
             song.set('url', data.url);
+            song.set('cover', data.cover);
+
             // 保存到云端
-            return song.save().then((Response)=>{
-                Object.assign(this.data,data)
+            return song.save().then((Response) => {
+                Object.assign(this.data, data)
                 return Response
             })
         }
@@ -100,7 +108,7 @@
             })
         },
         create() {
-            let needs = 'name singer url'.split(' ')
+            let needs = 'name singer url cover'.split(' ')
             let data = {}
             needs.map((string) => {
                 data[string] = $(this.view.el).find(`[name="${string}"]`).val()
@@ -113,17 +121,16 @@
                     window.eventHub.emit('create', object)
                 })
         },
-        updata(){
-            let needs = 'name singer url'.split(' ')
+        updata() {
+            let needs = 'name singer url cover'.split(' ')
             let data = {}
             needs.map((string) => {
                 data[string] = $(this.view.el).find(`[name="${string}"]`).val()
             })
-            console.log(data);
-            
+
             this.model.updata(data)
-                .then(()=>{
-                    window.eventHub.emit('updata',JSON.parse( JSON.stringify(this.model.data)))
+                .then(() => {
+                    window.eventHub.emit('updata', JSON.parse(JSON.stringify(this.model.data)))
                 })
         },
         bindevents() {
